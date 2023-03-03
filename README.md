@@ -61,7 +61,7 @@ As I have a limited timescale, I have split the build features into an MVP and a
 ## ERD: 
 https://lucid.app/documents/view/cfe4a7f6-736a-4284-858f-76e3649ef3ed
 
-## Mockup:
+## basic wireframe:
 https://www.figma.com/file/q5hif8fpInr2mLk6TR3zCD/Developer-app?node-id=6%3A5&t=zbHIn21JtxVtotjJ-1
 
 
