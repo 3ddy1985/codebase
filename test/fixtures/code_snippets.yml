@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  snippet_collection: one
+  language: one
+  content: MyString
+
+two:
+  snippet_collection: two
+  language: two
+  content: MyString
