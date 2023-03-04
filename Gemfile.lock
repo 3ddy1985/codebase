@@ -221,7 +221,10 @@ DEPENDENCIES
   capybara
   cssbundling-rails
   debug
+<<<<<<< HEAD
   device (~> 0.0.0)
+=======
+>>>>>>> 5c01c46fee9012b4a1756b1c9525e69769109648
   devise
   jbuilder
   jsbundling-rails

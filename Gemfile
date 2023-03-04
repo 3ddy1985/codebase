@@ -76,4 +76,3 @@ group :test do
   gem "webdrivers"
 end
 
-gem "device", "~> 0.0.0"
