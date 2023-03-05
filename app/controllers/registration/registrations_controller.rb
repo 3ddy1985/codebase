@@ -84,6 +84,6 @@ class Registration::RegistrationsController < Devise::RegistrationsController
       set_minimum_password_length
       respond_with resource
     end
-  end
+  end 
   
 end

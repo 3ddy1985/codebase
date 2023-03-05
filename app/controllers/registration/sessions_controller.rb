@@ -24,4 +24,8 @@ class Registration::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+  def new
+    self.resource = resource_class.new(sign_in_params)
+
+  end
 end
