@@ -1,5 +1,4 @@
-<!-- landing.html.erb -->
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"><%= image_tag "Dark_Mode_Logo.png", height: 50 %></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,17 +9,31 @@
         <a class="nav-link active" aria-current="page" href="#">Home</a>
         <%= link_to "Login", new_user_session_path, class: "nav-link" %>
         <%= link_to "Register", new_user_registration_path, class: "nav-link" %>
+        <i class="bi bi-box-arrow-right nav-link"></i>
       </div>
     </div>
   </div>
 </nav>
 
-<div class="landing-page">
-  <h1>Welcome to My App!</h1>
-  <p>Some information about your app here.</p>
-</div>
+    
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block sidebar">
+<p>left nav</p>
 
+          <!-- Sidebar content -->
+        </nav>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        
+<p>main</p>
 
+          <!-- Main content -->
+        </main>
+      </div>
+    </div>
+    
+    <footer class="fixed-bottom">
+<p>footer</p>
 
-
-
+      <!-- Footer content -->
+    </footer>

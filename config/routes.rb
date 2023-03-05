@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   # root "articles#index"
   # get "/landing", to: "landing#index"
   root to: 'landing#index'
+  get "/home", to: "home#main"
 end
  
