@@ -1,0 +1,24 @@
+<div class="user-profile">
+  <% if current_user.profile_picture.present? %>
+    <%= image_tag current_user.profile_picture, height: 170 %>
+  <% else %>
+    <%= image_tag 'default_profile_img.png', height: 170 %>
+  <% end %>
+  <h3><%= current_user.username %></h3>
+</div>
+
+<div id="selected-languages">
+  <%= render 'my_languages', user: @user %>
+
+</div>
+
+
+<%= render partial: "select_language_popup" %>
+
+<button id="select-language-btn" data-user-id="<%= current_user.id %>">Select Language</button>
+
+
+
+
+
+

@@ -6,9 +6,10 @@ class ApplicationController < ActionController::Base
      protected
 
           def configure_permitted_parameters
-               devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:first_name, :last_name, :username, :email, :password)}
 
-               devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:first_name, :last_name, :username, :email, :password, :current_password)}
+                    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :username, :email, :password, :profile_picture])
+                    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :username, :email, :password, :current_password, :profile_picture])
+
           end
 
           rescue_from ActiveRecord::RecordNotUnique, with: :show_error_message

@@ -1,0 +1,2 @@
+module LanguageCollectionsHelper
+end

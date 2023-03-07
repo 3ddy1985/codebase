@@ -1,0 +1,15 @@
+<div id="language-popup" class="hidden">
+  <div class="popup-content">
+    <ul>
+      <% Language.all.each do |language| %>
+        <li class="language-item<%= current_user.languages.include?(language) ? ' selected' : '' %>"
+            data-language-id="<%= language.id %>">
+          <%= language.name %>
+        </li>
+      <% end %>
+    </ul>
+    <button id="close-languages-dialog-btn">Close</button>
+  </div>
+</div>
+
+

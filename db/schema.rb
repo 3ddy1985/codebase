@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_05_080039) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_06_160443) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -34,15 +34,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_05_080039) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "language_collections", force: :cascade do |t|
+  create_table "language_collections", id: false, force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "post_id", null: false
     t.bigint "language_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["language_id"], name: "index_language_collections_on_language_id"
-    t.index ["post_id"], name: "index_language_collections_on_post_id"
-    t.index ["user_id"], name: "index_language_collections_on_user_id"
+    t.index ["language_id", "user_id"], name: "index_language_collections_on_language_id_and_user_id"
+    t.index ["user_id", "language_id"], name: "index_language_collections_on_user_id_and_language_id"
   end
 
   create_table "languages", force: :cascade do |t|
@@ -85,19 +81,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_05_080039) do
     t.string "username"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "profile_picture"
+    t.string "profile_picture", default: "default_profile_img.png"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
+  end
+
+  create_table "users_controllers", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "code_snippets", "languages"
   add_foreign_key "code_snippets", "snippet_collections"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
-  add_foreign_key "language_collections", "languages"
-  add_foreign_key "language_collections", "posts"
-  add_foreign_key "language_collections", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "snippet_collections", "users"
 end

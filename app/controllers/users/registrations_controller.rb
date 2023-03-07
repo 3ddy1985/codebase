@@ -3,7 +3,11 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-
+  def update_profile_picture
+    current_user.profile_picture.attach(params[:user][:profile_picture])
+    redirect_to edit_user_registration_path
+  end
+  
   # GET /resource/sign_up
   # def new
   #   super
