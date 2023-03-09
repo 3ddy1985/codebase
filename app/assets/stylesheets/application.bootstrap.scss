@@ -1,13 +1,50 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
 
-body {
-  background-color: rgb(29, 29, 29)!important;
-  color: white;
+:root {
+  --background-color: #1d1d1d; // default dark mode background color
+  --text-color: #fff; // default dark mode text color
+  --navbar-background-color: #1d1d1d; // default dark mode navbar background color
+  --sidebar-background-color: #1d1d1d; // default dark mode sidebar background color
+  --main-background-color: #1d1d1d; // default dark mode main background color
+  --footer-background-color: #1d1d1d; // default dark mode footer background color
+  --primary-color: #41bcf5; // primary color used throughout the styles
 }
 
-.navbar {
-  background-color: rgb(29, 29, 29)!important;
+.light {
+  --background-color: #f5f5f5; // light mode background color
+  --text-color: #333; // light mode text color
+  --navbar-background-color: #f5f5f5; // light mode navbar background color
+  --sidebar-background-color: #f5f5f5; // light mode sidebar background color
+  --main-background-color: #e5e5e5; // light mode main background color
+  --footer-background-color: #f5f5f5; // light mode footer background color
+}
+
+html {
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  scroll-behavior: smooth;
+  
+}
+
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid #77e0f5;
+}
+
+h1, h2, h3, h4, h5 {
+  color: #77e0f5;
+}
+
+nav.navbar {
+  background-color: var(--navbar-background-color);
   position: fixed;
   top: 0;
   left: 0;
@@ -15,17 +52,18 @@ body {
 }
 
 .sidebar {
-  background-color: rgb(29, 29, 29)!important;
+  background-color: var(--sidebar-background-color);
   height: 100%;
   position: fixed;
   top: 76px;
   bottom: 56px;
   left: 0;
   width: 250px;
+  padding: 0;
 }
 
 main {
-  background-color: rgb(78, 78, 78);
+  background-color: var(--main-background-color);
   position: absolute;
   top: 76px;
   bottom: 40px;
@@ -34,67 +72,199 @@ main {
 }
 
 footer {
-  background-color: rgb(29, 29, 29)!important;
+  background-color: var(--footer-background-color);
   position: fixed;
   bottom: 0;
-  left: 0;
-  right: 0;
+left: 0;
+right: 0;
 }
 
 .navbar-nav {
-  margin-right: 50px;
+margin-right: 50px;
 }
 
 .nav-link {
-  color: white;
-  font-weight: bold;
+color: var(--text-color);
+font-weight: bold;
 }
 
 .nav-link.active {
-  color: rgb(26, 152, 255)!important;
-  font-weight: bold;
+color: #1d1d1d!important;
+font-weight: bold;
 }
 
 i {
-  font-weight: bold;
+font-weight: bold;
 }
 
 #language-popup {
-  position: absolute;
-  top: 50px;
-  right: 0;
-  z-index: 100;
-  background-color: #5e5c5c;
-  border: 1px solid #cccccc;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  padding: 10px;
+position: absolute;
+top: 50px;
+right: 0;
+z-index: 100;
+background-color: #5e5c5c;
+border: 1px solid #cccccc;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+padding: 10px;
 }
 
 .popup-content {
-  max-height: 200px;
-  overflow: auto;
+max-height: 200px;
+overflow: auto;
 }
 
 .popup-content ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+list-style: none;
+margin: 0;
+padding: 0;
 }
 
 .popup-content li {
-  margin-bottom: 5px;
-  cursor: pointer;
+margin-bottom: 5px;
+cursor: pointer;
 }
 
 .popup-content li.selected {
-  font-weight: bold;
+font-weight: bold;
 }
 
 .popup-content li:hover {
-  background-color: #f0f0f0;
+background-color: #f0f0f0;
 }
 
 .hidden {
+display: none;
+}
+
+.profile {
+padding: 50px;
+min-height: 100%;
+}
+
+.user-profile {
+text-align: center;
+}
+
+.language-button {
+padding: 5px 30px;
+margin: 5px 5px;
+background-color: #1d1d1d00;
+border: none;
+border-radius: 5px;
+color: rgb(78, 78, 78);
+font-weight: bold;
+}
+
+#selected-languages {
+width: 100%;
+display: flex;
+flex-wrap: wrap;
+}
+
+.right-column {
+background-color: #3b3b3b;
+margin-left: 30px;
+margin-right: 10px;
+padding: 30px;
+border-radius: 5px;
+box-shadow: 0 0 10px 5px #d8d8d87a;
+}
+
+.left-column {
+display: flex;
+align-items: center;
+justify-content: center;
+background-color: #3b3b3b;
+margin-left: 10px;
+margin-right: 30px;
+padding: 30px;
+border-radius: 5px;
+box-shadow: 0 0 10px 5px #d8d8d87a;
+height: 100%;
+overflow: auto;
+}
+
+.container-fluid, .row {
+height: 100%;
+}
+
+.bio-container .bio {
+max-height: 50px;
+overflow: hidden;
+transition: max-height 0.5s ease-out;
+}
+.bio-container.expanded .bio {
+max-height: none;
+}
+
+.show-more-btn {
+display: block;
+margin: 10px auto;
+font-weight: bold;
+cursor: pointer;
+color: var(--text-color);
+}
+
+.show-less-btn {
+display: block;
+margin: 10px auto;
+font-weight: bold;
+cursor: pointer;
+color: var(--text-color);
+}
+
+/* Change scrollbar color */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 60px;
+  background-color: #2b2a2a;
+}
+
+/* Change thumb */
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+  height: 80px;
+}
+
+/* Change thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+/* Change track color */
+::-webkit-scrollbar-track {
+  background-color: #77e0f5;
+}
+
+
+#popup-container {
   display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+#popup-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  width: 400px;
+  max-width: 90%;
+  border-radius: 5px;
+}
+
+.edit-form {
+  display: none;
+}
+.show-form .edit-form {
+  display: block;
 }
 

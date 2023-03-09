@@ -1,14 +1,30 @@
 class UsersController < ApplicationController
   before_action :set_current_user
+  before_action :configure_permitted_parameters
 
   def profile
     @languages = current_user.languages
   end
 
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:bio, :location])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:bio, :location])
+  end
+
+  def user_params
+    params.require(:user).permit(:email, :password, :password_confirmation, :location, :bio)
+  end
+
+  def resource_class
+    User
+  end
+  
+  
   def languages
     @user = User.find(params[:id])
     @languages = @user.languages
     respond_to do |format|
+      format.html { render partial: 'users/select_language_popup' }
       format.json { render json: @languages }
     end
   end
@@ -42,10 +58,6 @@ class UsersController < ApplicationController
   def set_current_user
     @current_user = User.find(current_user.id)
   end
-
-  
-  
-  
 end
 
   

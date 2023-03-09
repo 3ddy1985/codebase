@@ -8,16 +8,19 @@
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.3",
     "esbuild": "^0.17.10",
-    "glob": "^9.2.1",
-    "sass": "^1.58.3",
-    "url": "^0.11.0",
     "events": "^3.2.0",
+    "glob": "^9.2.1",
+    "jquery": "^3.6.4",
+    "node-fetch": "^3.3.0",
+    "path": "^0.12.7",
+    "popper.js": "^1.16.1",
+    "sass": "^1.58.3",
     "stream": "0.0.2",
     "string_decoder": "^1.1.1",
-    "path": "^0.12.7"
+    "url": "^0.11.0"
   },
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets --platform=node",
     "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
   }
 }

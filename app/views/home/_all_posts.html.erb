@@ -1,0 +1,17 @@
+<button id="create-post-button" type="button" class="btn btn-primary">Create Post</button>
+
+<div id="new-post-form" style="display:none;">
+  <%= render partial: "create_post_form", locals: { post: @post } %>
+  <button id="close-post-form" type="button" class="btn btn-secondary">Close</button>
+</div>
+
+<div id="all-posts">
+  <% if @posts.any? %>
+    <% @posts.order(created_at: :desc).each do |post| %>
+      <%= render 'post', post: post %>
+    <% end %>
+  <% else %>
+    <p>No posts yet. Be the first to create one!</p>
+  <% end %>
+</div>
+

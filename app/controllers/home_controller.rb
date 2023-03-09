@@ -4,6 +4,7 @@ class HomeController < ApplicationController
   def main
     @posts = Post.all.order(created_at: :desc)
     @user = current_user
+    @post = Post.new
   end
 
   def destroy_user_language

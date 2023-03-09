@@ -1,22 +1,42 @@
-<div class="user-profile">
-  <% if current_user.profile_picture.present? %>
-    <%= image_tag current_user.profile_picture, height: 170 %>
-  <% else %>
-    <%= image_tag 'default_profile_img.png', height: 170 %>
-  <% end %>
-  <h3><%= current_user.username %></h3>
+<div class="container-fluid profile">
+  <div class="row">
+    <div class="col-sm-3 left-column">
+      <div class="user-profile">
+        <% if current_user.profile_picture.present? %>
+          <%= image_tag current_user.profile_picture, height: 250 %>
+        <% else %>
+          <%= image_tag 'default_profile_img.png', height: 250 %>
+        <% end %>
+        <br />
+        <br />
+        <h4><%= current_user.username %></h4>
+        <hr />
+        <p><%= current_user.first_name %> <%= current_user.last_name %></p>
+        <hr />
+        <p><%= current_user.location %></p>
+        <hr />
+        <p><%= current_user.email %></p>
+        <hr />
+        <div class="bio-container">
+          <p>Bio:</p>
+          <p class="bio"><%= current_user.bio %></p>
+          <% if current_user.bio.length > 50 %>
+            <button class="show-more-btn">Show more</button>
+          <% end %>
+        </div>
+
+
+      </div>
+    </div>
+    <div class="col-sm-8 right-column">
+      <div id="selected-languages">
+        <%= render 'my_languages', user: @user %>
+      </div>
+      <%= render partial: "select_language_popup" %>
+      <button id="select-language-btn" data-user-id="<%= current_user.id %>">Select Language</button>
+    </div>
+  </div>
 </div>
-
-<div id="selected-languages">
-  <%= render 'my_languages', user: @user %>
-
-</div>
-
-
-<%= render partial: "select_language_popup" %>
-
-<button id="select-language-btn" data-user-id="<%= current_user.id %>">Select Language</button>
-
 
 
 

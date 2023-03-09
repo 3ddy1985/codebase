@@ -1,0 +1,7 @@
+<!-- h2>My Connections</h2>
+
+<div id="my-connections">
+  <% @user.languages.each do |language| %>
+    <%= button_to language.name, language_collection_path(@user, language), method: :delete, data: { confirm: 'Are you sure?' }, class: 'language-button', style: "border-color: #{language.color}" %>
+  <% end %>
+</div -->

@@ -6,10 +6,12 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav ms-auto">
-        <a class="nav-link active" aria-current="page" href="#">Home</a>
-        <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-        <%= link_to "Register", new_user_registration_path, class: "nav-link" %>
-        <i class="bi bi-box-arrow-right nav-link"></i>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+
+        <div class="form-check form-switch">
+          <input type="checkbox" class="form-check-input" id="darkSwitch" />
+          <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
+        </div>
       </div>
     </div>
   </div>
@@ -19,13 +21,17 @@
     <div class="container-fluid">
       <div class="row">
         <nav class="col-md-2 d-none d-md-block sidebar">
-<p>left nav</p>
-
+          <button class="sidebar-btn">My code snippets</button>
+          <button class="sidebar-btn">Post</button>
+          <button class="sidebar-btn">Chat</button>
+          <button class="sidebar-btn">Saved questions</button>
           <!-- Sidebar content -->
         </nav>
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
         
-          <%= render partial: "profile" %>
+          <!-- %= render partial: "profile" % -->
+          <%= render partial: "all_posts" %>
+
 
 
           <!-- Main content -->
