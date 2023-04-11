@@ -82,7 +82,113 @@ Throughout the development of the initial project, I learned valuable lessons ab
 
 In the rebuilt app, I will apply my learnings from the initial project to create a more efficient and streamlined application. The updated app will be showcased on my portfolio, CV, and LinkedIn once completed.
 
+### Code I'm Proud of
+Despite the fact that the functionality could have been achieved through simpler means, I invested a considerable amount of effort and time in creating this code, and it presented a formidable challenge that tested my programming skills. While the end result may not have been strictly necessary, the process of developing and refining the code was an enriching experience that allowed me to grow and expand my knowledge in the field of software development.
 
+```js
+document.addEventListener('DOMContentLoaded', function() {  
+  const selectLanguageBtn = document.getElementById('select-language-btn');
+  const userId = selectLanguageBtn.dataset.userId;
+  const popup = document.getElementById('language-popup');
+  const languageList = popup.querySelector('ul');
+  
+  
+  // Function to get the user's selected connections from the server
+  function getSelectedLanguages() {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', '/users/' + userId + '/connections', true);
+    xhr.onload = function() {
+      if (xhr.status >= 200 && xhr.status < 400) {
+        const languages = JSON.parse(xhr.responseText);
+        languages.forEach(function(language) {
+          const li = document.createElement('li');
+          li.dataset.id = language.id; // Set the dataset.id attribute
+          li.textContent = language.name;
+          languageList.appendChild(li);
+        });
+      }
+    };
+    xhr.send();
+  }
+  
+  // Function to add or remove a language from the user's collection
+  function updateLanguageCollection(languageId, addLanguage) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '/users/' + userId + '/language_collections', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+    xhr.setRequestHeader('X-CSRF-Token', Rails.csrfToken());
+    if (!addLanguage) {
+      xhr.setRequestHeader('X-HTTP-Method-Override', 'delete');
+    }
+    xhr.onload = function() {
+      if (xhr.status >= 200 && xhr.status < 400) {
+        const language = JSON.parse(xhr.responseText);
+        const selectedLanguageItem = document.querySelector('.language-item[data-language-id="' + language.id + '"]');
+        if (addLanguage) {
+          selectedLanguageItem.classList.add('selected');
+          const selectedLanguages = document.getElementById('selected-languages');
+          const buttonHTML = '<button class="language-button" data-language-id="' + language.id + '">' + language.name + '</button>';
+          selectedLanguages.insertAdjacentHTML('beforeend', buttonHTML);
+        } else {
+          selectedLanguageItem.classList.remove('selected');
+          const selectedLanguages = document.getElementById('selected-languages');
+          const button = selectedLanguages.querySelector('.language-button[data-language-id="' + language.id + '"]');
+          button.remove();
+        }
+      }
+    };
+    xhr.send('language_id=' + languageId);
+  }
+  
+  
+  // When the page loads, get the user's selected languages from the server
+  getSelectedLanguages();
+  
+  // When the select language button is clicked, show the language popup
+  selectLanguageBtn.addEventListener('click', function() {
+    popup.classList.remove('hidden');
+  });
+  
+  // When a language item in the popup is clicked, add or remove the language from the user's collection
+  popup.addEventListener('click', function(e) {
+    if (e.target.tagName === 'LI') {
+      const languageId = e.target.dataset.languageId;
+      updateLanguageCollection(languageId, !e.target.classList.contains('selected'));
+    }
+    if (e.target.id === 'close-languages-dialog-btn') {
+      popup.classList.add('hidden');
+      // Clear the list of selected languages
+      // languageList.innerHTML = '';
+      // Refresh the list of selected languages from the server
+      fetch('/users/' + userId + '/my_languages')
+        .then(response => response.text())
+        .then(html => {
+          const selectedLanguages = document.getElementById('selected-languages');
+          selectedLanguages.innerHTML = html;
+        });
+    }
+  });
 
+  
+  // When a language button in the my languages section is clicked, remove the language from the user's collection
+  document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('language-button')) {
+      const languageId = e.target.dataset.languageId;
+      updateLanguageCollection(languageId, false);
+    }
+  });
+  
+  // When a remove button is clicked next to a language in the popup, remove the language from the user's collection
+  popup.addEventListener('click', function(e) {
+    if (e.target.classList.contains('remove-language')) {
+      e.preventDefault();
+      const listItem = e.target.closest('li');
+      const languageId = listItem.dataset.languageId;
+      listItem.remove();
+      updateLanguageCollection(languageId, false);
+    }
+  });
+});
+```
 
 
