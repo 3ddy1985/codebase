@@ -85,14 +85,13 @@ ERD:
 Wireframe:
 ![alt text](https://github.com/3ddy1985/codebase/blob/main/codebase_wireframe.png?raw=true)
 
-### Reflections
-Throughout the development of the initial project, I learned valuable lessons about the importance of using appropriate tools and techniques to streamline code. While I faced challenges in implementing some features using more complex methods than necessary, I am proud of certain sections of code that I wrote.
+### Build/Code Process:
+The app's core functionality was implemented using Ruby on Rails, with models for users, code languages, and questions. The user interface was built using HTML, CSS, and JavaScript for dynamic interactions. The app leverages the Devise gem for authentication and authorization.
 
-In the rebuilt app, I will apply my learnings from the initial project to create a more efficient and streamlined application. The updated app will be showcased on my portfolio, CV, and LinkedIn once completed.
+Some code snippets I'm particularly proud of include:
 
-### Code I'm Proud of
-Despite the fact that the functionality could have been achieved through simpler means, I invested a considerable amount of effort and time in creating this code, and it presented a formidable challenge that tested my programming skills. While the end result may not have been strictly necessary, the process of developing and refining the code was an enriching experience that allowed me to grow and expand my knowledge in the field of software development.
 
+1. Developer Language Preferences
 ```js
 document.addEventListener('DOMContentLoaded', function() {  
   const selectLanguageBtn = document.getElementById('select-language-btn');
@@ -198,5 +197,67 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 ```
+This is a JavaScript code that adds interactivity to a webpage that allows users to select and manage their language preferences. The code listens for user actions such as clicking on a button or a language item, sends requests to the server to retrieve or update user data, and dynamically updates the webpage content to reflect the changes. The code uses techniques such as AJAX and event listeners to enable a seamless user experience.
 
+2. Language collections
+```js
+class LanguageCollectionsController < ApplicationController
+  before_action :set_user, only: [:create, :destroy]
 
+  def create
+    @language = Language.find(params[:language_id])
+    @user.languages << @language
+    render json: @language
+  end
+
+  def delete
+    language_collection = LanguageCollection.find_by(user_id: params[:id], language_id: params[:id])
+    if language_collection.destroy
+      flash[:notice] = "Language removed successfully."
+      render :main
+    else
+      flash[:alert] = "There was an error removing the language."
+      render :main
+    end
+
+  end
+  
+  private
+
+  def set_user
+    @user = User.find(params[:user_id])
+  end
+end
+```
+
+The controller defines two actions: create and delete. The create action adds a new language to the user's collection and returns the added language as a JSON object. The delete action removes a language from the user's collection and redirects to the main page with a flash message indicating the success or failure of the operation. The controller also defines a private method to set the user object based on the user_id parameter.
+
+### Challenges:
+1. Utilizing Devise and adding custom fields:  
+  One of the challenges I faced was integrating Devise for authentication and adding custom fields to the user model. To overcome this, I spent time understanding the Devise documentation and learning how to customize the registration process. By generating the Devise views, I was able to add custom fields to the registration form and update the user model and controller accordingly.
+
+2. Learning and implementing XHR (XMLHttpRequest):  
+  Another challenge was learning about XHR and implementing it in the app to enable asynchronous communication between the front-end and back-end. I had to familiarize myself with the concept of AJAX and how to use XHR to make asynchronous requests. I then implemented XHR to update parts of the web page without requiring a full page refresh, improving the user experience.
+  
+### Wins:
+1. Progress despite learning on the go:  
+  One of my biggest wins for this project was the progress I made despite having to learn new concepts and technologies as I went along. Tackling the challenges of integrating Devise with custom fields and implementing XHR taught me valuable lessons in problem-solving and adaptability. This experience showed me that I am capable of learning quickly and applying new knowledge effectively.
+
+2. Writing complex code:  
+  Another win was successfully writing more complex code for the app, which demonstrates my growth as a developer. The code snippets I provided earlier, such as the models, views, and JavaScript functions, show that I am capable of understanding and implementing advanced programming concepts. This accomplishment has boosted my confidence in my ability to take on more complex projects in the future.  
+
+Overall, these wins emphasize my ability to learn and adapt while working on a project. They also highlight my growth as a developer and the progress I have made in understanding and implementing advanced programming concepts.
+
+### Key Learnings/Takeaways:
+1. Evaluating the best approach:  
+  One of the key takeaways from this project is the importance of evaluating different options and choosing the most efficient and effective approach. In this case, I learned that using XHR might not have been the best option when there were alternatives like Action Cable and Turbo Rails available. These options could have potentially simplified the implementation process and provided the same functionality without the need to code everything from scratch.
+
+2. Leveraging existing solutions:  
+  Another important learning is the value of leveraging existing solutions and libraries to streamline development. By utilizing tools like Action Cable and Turbo Rails, I could have saved time and effort while achieving the same results. This lesson underscores the importance of staying up-to-date with the latest technologies and tools in the development ecosystem and understanding how they can be applied to improve the efficiency of the development process.
+
+3. Balancing learning and productivity:  
+  This project also highlighted the need to strike a balance between learning new concepts and maintaining productivity. While learning and implementing XHR was valuable from an educational standpoint, considering alternative solutions might have led to a more efficient development process. Going forward, I will aim to carefully weigh the benefits of learning new technologies against the potential impact on productivity and project timelines.  
+
+These key learnings and takeaways will serve as valuable insights for future projects, helping me make informed decisions about the technologies and approaches I choose to employ. This will ultimately contribute to my growth as a developer and my ability to create more efficient and effective applications.
+
+### Future Improvements:
