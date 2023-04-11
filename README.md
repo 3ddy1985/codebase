@@ -1,7 +1,20 @@
-# CodeBase, a Fullstack Ruby on Rails app - GA Project 4
+# Project 4 - CodeBase
 
 CodeBase is a social platform for coders to share, learn and connect with other coders. The app is built using Ruby on Rails and uses a PostgreSQL database. The app allows users to sign up, create a profile, add code snippets to their profile, post questions, and engage in conversations.
 
+### Initial Project
+The initial project met the requirements, including full CRUD for at least one of the models. However, some features were implemented using a more complex approach than necessary. For example, I used xhr instead of Turbo Rails and Action Cable. Despite the challenges, there were some sections of code that I was proud of, and I learned valuable lessons from the process.
+
+### Rebuilding Project
+I am currently rebuilding the app, applying the learnings from the initial project to make it more efficient and streamlined. The updated app will be showcased on my portfolio, CV, and LinkedIn once completed.
+
+### Technologies Used
+* Ruby on Rails
+*  PostgreSQL
+* HTML
+* CSS
+* JavaScript
+* Heroku (for deployment)
 
 ## Brief
 - **Build a full stack web application**. Must be your own work.
@@ -58,13 +71,16 @@ As I have a limited timescale, I have split the build features into an MVP and a
 - As a user, I want to be able to receive notifications when someone comments on my posts or replies to my comments.
 
 
-## ERD: 
+### ERD: 
 https://lucid.app/documents/view/cfe4a7f6-736a-4284-858f-76e3649ef3ed
 
-## basic wireframe:
+### basic wireframe:
 https://www.figma.com/file/q5hif8fpInr2mLk6TR3zCD/Developer-app?node-id=6%3A5&t=zbHIn21JtxVtotjJ-1
 
+### Reflections
+Throughout the development of the initial project, I learned valuable lessons about the importance of using appropriate tools and techniques to streamline code. While I faced challenges in implementing some features using more complex methods than necessary, I am proud of certain sections of code that I wrote.
 
+In the rebuilt app, I will apply my learnings from the initial project to create a more efficient and streamlined application. The updated app will be showcased on my portfolio, CV, and LinkedIn once completed.
 
 
 
