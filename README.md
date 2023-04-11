@@ -8,6 +8,12 @@ The initial project met the requirements, including full CRUD for at least one o
 ### Rebuilding Project
 I am currently rebuilding the app, applying the learnings from the initial project to make it more efficient and streamlined. The updated app will be showcased on my portfolio, CV, and LinkedIn once completed.
 
+### Deployment Link
+The deployed project can be found at https://infinite-garden-21771.herokuapp.com/
+
+### Timeframe & Working Team
+This project was completed individually over a period of 1 week
+
 ### Technologies Used
 * Ruby on Rails
 *  PostgreSQL
@@ -39,7 +45,7 @@ I am currently rebuilding the app, applying the learnings from the initial proje
 - **Craft a `README.md` file that explains your app**.
 - Timeframe - One week
 
-## Features
+### Features
 As I had a limited timescale, I decided to split the build features into an MVP and additional features. This was done to ensure that I had a fully functional CRUD app to present at the end of the project week.
 
 ### MVP:
@@ -56,7 +62,7 @@ As I had a limited timescale, I decided to split the build features into an MVP 
 - Integration with external APIs to enhance search results
 
 
-## User Stories:
+### User Stories:
 - As a new user, I want to be able to create an account with a unique username and password so that I can access the features of the app.
 - As a user, I want to be able to log in and log out of my account so that I can securely access my saved code snippets and posts.
 - As a user, I want to be able to create a profile with information about myself, such as my name, profile picture, and bio, so that other users can learn more about me.
@@ -70,12 +76,14 @@ As I had a limited timescale, I decided to split the build features into an MVP 
 - As a user, I want to be able to follow other users and receive notifications when they create new posts or comment on existing ones.
 - As a user, I want to be able to receive notifications when someone comments on my posts or replies to my comments.
 
+### Planning
+As I had a lot to accomplish within a week, I aimed to optimize my planning process. While I allocated a significant portion of my time to developing an Entity-Relationship Diagram (ERD), I recognized its value in ensuring clarity around the desired structure of my database and the connections between its tables.
 
-### ERD: 
-https://lucid.app/documents/view/cfe4a7f6-736a-4284-858f-76e3649ef3ed
+ERD: 
+![alt text](https://github.com/3ddy1985/codebase/blob/main/codebase_erd.png?raw=true)
 
-### basic wireframe:
-https://www.figma.com/file/q5hif8fpInr2mLk6TR3zCD/Developer-app?node-id=6%3A5&t=zbHIn21JtxVtotjJ-1
+Wireframe:
+![alt text](https://github.com/3ddy1985/codebase/blob/main/codebase_wireframe.png?raw=true)
 
 ### Reflections
 Throughout the development of the initial project, I learned valuable lessons about the importance of using appropriate tools and techniques to streamline code. While I faced challenges in implementing some features using more complex methods than necessary, I am proud of certain sections of code that I wrote.
