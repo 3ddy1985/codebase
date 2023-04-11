@@ -40,7 +40,7 @@ I am currently rebuilding the app, applying the learnings from the initial proje
 - Timeframe - One week
 
 ## Features
-As I have a limited timescale, I have split the build features into an MVP and additional features. I have done this to make sure I have a fully working CRUD app to present at the end of project week.
+As I had a limited timescale, I decided to split the build features into an MVP and additional features. This was done to ensure that I had a fully functional CRUD app to present at the end of the project week.
 
 ### MVP:
 - User registration and login
